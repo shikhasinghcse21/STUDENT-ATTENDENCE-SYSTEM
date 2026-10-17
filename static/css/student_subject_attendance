@@ -1,0 +1,99 @@
+/* =========================================================
+   student_subject_attendance.css
+   - Used by templates/student_subject_attendance.html
+   - Shows attendance table for a specific subject
+   ========================================================= */
+
+/* Root variables for consistent theme */
+:root{
+  --bg: #f6f8fb;
+  --card-bg: #ffffff;
+  --primary: #0b5ed7;
+  --muted: #666666;
+  --success: #0f9d58;
+  --danger: #d93025;
+  --shadow: 0 8px 30px rgba(20,30,50,0.06);
+  --radius: 10px;
+  --pad: 22px;
+  --max-width: 980px;
+  --font-family: "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; padding: 0; font-family: var(--font-family); background: var(--bg); color: #222; }
+
+.container {
+  max-width: var(--max-width);
+  margin: 28px auto;
+  background: var(--card-bg);
+  padding: var(--pad);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+h2 { margin: 0 0 6px 0; color: var(--primary); font-size: 22px; }
+.student-info { margin: 6px 0 12px; color: var(--muted); }
+
+/* action buttons row */
+.top-actions {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.btn {
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: var(--primary);
+  color: #fff;
+  font-weight: 600;
+}
+
+/* Attendance table styling */
+.attendance-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 8px;
+  background: #fff;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+}
+.attendance-table thead th {
+  background: var(--primary);
+  color: #fff;
+  text-align: left;
+  padding: 12px 14px;
+  font-weight: 700;
+  font-size: 14px;
+}
+.attendance-table tbody td {
+  padding: 12px 14px;
+  border-bottom: 1px solid #eef2f6;
+  font-size: 14px;
+  color: #222;
+}
+
+/* status badges */
+.present {
+  color: var(--success);
+  font-weight: 700;
+}
+.absent {
+  color: var(--danger);
+  font-weight: 700;
+}
+
+/* empty state */
+.empty-box {
+  text-align: center;
+  padding: 40px 10px;
+  color: var(--muted);
+}
+
+/* responsive */
+@media (max-width: 800px) {
+  .attendance-table thead th, .attendance-table tbody td { padding: 10px; font-size: 13px; }
+  .top-actions { flex-direction: column; align-items: flex-start; }
+}

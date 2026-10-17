@@ -1,0 +1,112 @@
+/* =========================================================
+   view_subjects_student.css
+   - Used by templates/view_subjects_student.html
+   - Shows grid of subjects for the logged-in student
+   ========================================================= */
+
+/* --- Basic page / layout --- */
+:root{
+  --bg: #f5f7fb;
+  --card-bg: #ffffff;
+  --primary: #0b5ed7;
+  --muted: #666666;
+  --shadow: 0 8px 30px rgba(20,30,50,0.06);
+  --radius: 10px;
+  --gap: 16px;
+  --max-width: 980px;
+  --pad: 22px;
+  --font-family: "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html,body { height: 100%; margin: 0; padding: 0; font-family: var(--font-family); background: var(--bg); color: #222; }
+
+/* container centers the page content */
+.container {
+  max-width: var(--max-width);
+  margin: 28px auto;
+  background: var(--card-bg);
+  padding: var(--pad);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+/* header */
+h2 {
+  margin: 0 0 6px 0;
+  color: var(--primary);
+  font-size: 22px;
+  line-height: 1.2;
+}
+.welcome {
+  margin: 6px 0 14px 0;
+  color: var(--muted);
+}
+
+/* Back button (small) */
+.btn {
+  display: inline-block;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: var(--primary);
+  color: #fff;
+  font-weight: 600;
+  margin: 8px 0;
+}
+.btn.back { background: #6c757d; }
+
+/* --- Subjects grid --- */
+.subjects-grid {
+  display: grid;
+  gap: var(--gap);
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  margin-top: 18px;
+}
+
+/* Subject card */
+.subject-card {
+  padding: 18px;
+  border-radius: 8px;
+  background: var(--card-bg);
+  box-shadow: 0 6px 16px rgba(15,25,40,0.05);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 120px;
+}
+.subject-card h3 {
+  margin: 0 0 8px;
+  color: #1643b3;
+  font-size: 18px;
+}
+.subject-card .branch {
+  margin: 0 0 12px;
+  color: var(--muted);
+}
+
+/* Action button inside card */
+.btn.view {
+  background: #198754; /* green */
+  padding: 8px 12px;
+  border-radius: 8px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-block;
+}
+
+/* Empty / no results state */
+.no-sub {
+  text-align: center;
+  padding: 36px 12px;
+  color: var(--muted);
+}
+
+/* --- Small-screen responsiveness --- */
+@media (max-width: 520px) {
+  .container { padding: 14px; margin: 16px; }
+  h2 { font-size: 20px; }
+  .subject-card { padding: 14px; min-height: 110px; }
+}

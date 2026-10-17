@@ -1,0 +1,28 @@
+Ë
+    V…Þh1  ã                   ó.   — d dl mZ d dlmZ d dlmZ d„ Zy)é    )Úget_connection)Úteacher_menu)Ústudent_menuc                   ó  — t        d«       t        d«       t        d«       t        d«       t        d«      } | dk(  r—t        d «      }t        d«      }t        «       }|j                   «       }d	}|j	                  |||f«       |j
+                  «       }|j
+                  «        |r#t        d
+|d
+   › d|d
+   › d«       t        «        y t        d«       y | dk(  r—t        d«      }t        d«      }t        «       }|j                   «       }d}|j	                  |||f«       |j
+                  «       }|j
+                  «        |r#t        d|d
+   › d|d
+   › d«       t        «        y t        d«       y | dk(  rt        d«       y t        d«       y )Nz
+=== Login Page ===z1. Teacher Loginz2. Student Loginz 3. ExitzEnter choice: Ú1zEnter Teacher Email: zEnter Password: z<SELECT id, name FROM teachers WHERE email=%s AND password=%su   âœ… Welcome Teacher é   z (ID: r   ú)u    âŒ Invalid Teacher credentials!Ú2zEnter Student Email: zASELECT roll_no, name FROM students WHERE email=%s AND password=%su   âœ… Welcome Student z
+ (Roll No: u    âŒ Invalid Student credentials!Ú3zExiting Login Page...u   âŒ Invalid Choice)	ÚprintÚinputr   ÚcursorÚ executeÚfetchoneÚcloser   r   ) ÚchoiceÚemailÚpasswordÚconnr   ÚqueryÚusers           ú;c:\Users\Devanshu Uikey\Projects\Attendence system\login.pyÚloginr      sh  € Ü	Ð
+ Ô!Ü	Ð
+ÔÜ	Ð
+ÔÜ	ˆ)Ôä
+Ð#Ó
+$€Fà 
+‚}ÜÐ-Ó.ˆÜÐ+Ó,ˆäÓˆØ—‘“ˆØNˆØ‰u˜u hÐ/Ô0Ø‰Ó ˆØ
+‰
+Œá
+ÜÐ(¨¨a©¨	°¸¸Q¹ °yÀÐBÔCÜNäÐ4Õ5à	3ŠÜÐ-Ó.ˆÜÐ+Ó,ˆäÓˆØ—‘“ˆØSˆØ‰u˜u hÐ/Ô0Ø‰Ó ˆØ
+‰
+Œá
+ÜÐ(¨¨a©¨	°¸TÀ!¹W¸IÀQÐGÔHÜNäÐ4Õ5à	3ŠÜ
+Ð%Ô&Øä
+Ð"Õ#ó    N) Ú
+db_connectr   Ú teacherr   Ú studentr   r   © r   r   ú<module>r      s   ðÝ %Ý  Ý  ó.$r   

@@ -1,0 +1,79 @@
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+    color: #333;
+}
+
+/* Main container for dashboard & simple pages */
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    background: white;
+    padding: 35px 40px;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 28px;
+    color: #2b6cb0;
+}
+
+/* Menu buttons used on dashboard pages */
+.menu {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.menu a {
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+    background: #4CAF50;
+    color: white;
+    text-align: center;
+    border-radius: 6px;
+    font-size: 17px;
+    transition: 0.3s ease;
+}
+
+.menu a:hover {
+    background: #45a049;
+}
+
+/* Danger Button (Logout, Reject etc) */
+.menu .danger {
+    background: #d9534f !important;
+}
+
+.menu .danger:hover {
+    background: #c9302c !important;
+}
+
+/* Simple text alignment */
+p {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 15px;
+}
+
+/* Flash messages */
+.flash {
+    margin: 10px 0;
+    padding: 12px;
+    border-radius: 6px;
+    background: #ffe0e0;
+    color: #b30000;
+    font-weight: bold;
+    text-align: center;
+}

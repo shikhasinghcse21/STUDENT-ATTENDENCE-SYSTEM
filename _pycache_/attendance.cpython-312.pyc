@@ -1,65 +1,0 @@
- 
-
-    g  h-                       4     d dl mZ d dlmZ d  Zd  Zd  Zd  Z y )     ) get_connection) datec                      	 t                }|j                          }t        j                          }|j	                  d| ||f        |j
-                          rt
-        d        n8|j	                  d| ||||f        |j                           t
-        d|   d|           |j                           y # t        $ r} t
-        d|         Y d } ~ y d } ~ ww xY w) NzOSELECT * FROM attendance WHERE student_roll_no=%s AND subject_id=%s AND date=%su5   ❌ Attendance already marked for this student today!zdINSERT INTO attendance(student_roll_no, subject_id, teacher_id, date, status) VALUES(%s,%s,%s,%s,%s)u   ✅ Attendance marked: Student z - u    ⚠️ Error in mark_attendance:)
-r    cursorr    today  execute fetchone print commit close 	Exception) student_roll_no 
-subject_id 
-teacher_id status connr   r     es            @c:\Users\Devanshu Uikey\Projects\Attendence system\attendance.py mark_attendancer      s       5          
- 
-      ] 
- j % 0 	
-   ? ? 
-  I J  N N v   * j %  H 
-  
- K K M  3 O 3D C  x P Q  
- 
-   
-  5 
- 0 ! 4 4  5 s    B'B*  *	C	 3C C	c           
-       f    	 t                }|j                          }|j                  d| f        |j                           }|j	                           |r4t
-        d|   d         |D ]  }t
-        d|d     d|d      d|d	               ! y t
-        d
-        y # t        $ r}t
-        d
-|        Y d }~y d }~ww xY w)Nz SELECT a.date, s.name AS subject, a.status FROM attendance a JOIN subjects s ON a.subject_id=s.id WHERE a.student_roll_no=%s ORDER BY a.dateu   
-📋 Attendance for Student  :zDate: r   z | Subject:     z
- | Status:     u)   ❌ No attendance found for this student!u+   ⚠️ Error in view_attendance_by_student:) r   r   r    fetchallr   r
-   r
-   )r   r   r    rows rowr   s         r    view_attendance_by_studentr      s       @            
-9    		
-         
- 
-  
-  2 ? 2C 1 E F   
-P    s 1 v h l 3 q 6 ( + c ! f X N O 
-P  
- = >  
-  @ 
- ; Q ? ?  @ s    BB  
-B  	B0 B+ +B0c                  N    	 t        d        t        d        t        d        t        d        t        d       }|dk(  r0t        d        }t        d       }t        d	       }t        ||| |        n8|d
-k(  rt        d
-       }t         |        n|dk(  rt        d
-        y t        d          )Nz 
---- Teacher Attendance Menu ---z1. Mark Attendancez2. View Student Attendancez 3. BackzEnter choice:  1zEnter Student Roll No: zEnter Subject ID: zEnter Status (Present/Absent):  2zEnter Student Roll No to view:  3z"Exiting Teacher Attendance Menu...u   ❌ Invalid Choice)r
-    inputr   r   )r    choicer   r   r   s        r    teacher_attendance_menur$   3   s       
- 
- 1 2 
- " # 
- * + 
- i   ' (  
- S = # $= > O  3 4 J  < = F  O Z  V L 
- s ] # $E F O &  7 
- s ]  6 7   
- & ' - 
-     c                  ~     	 t        d|   d         t        |         y # t        $ r}t        d|        Y d }~y d }~ww xY w)Nz
---- Attendance for Student z ---u(   ⚠️ Error in student_attendance_menu:)r
-   r   r
-   )r   r   s     r    student_attendance_menur'   M   s@      = 
- - o -> d C D " ? 3  
-  = 
- 8 ! < <  = s      	< 7 <N) 
-db_connectr    datetimer   r   r   r$   r'     r%   r    <module>r+      s       %   5 0@ ,( 4=r%   

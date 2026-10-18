@@ -1,0 +1,66 @@
+Ë
+    ŠÞh6  ã                   ó0   — d dl mZ d„ Zd„ Zd„ Zd„ Zdd „Zy)	é    )Úget_connectionc                 óþ   — 	 t        «       }|j                  «       }|j                  d| ||f«       |j                   «        |j	                  «        t
+        d«       y # t        $ r}t
+        d|«       Y d }~y d }~ww xY w)NzLINSERT INTO teachers(name,email,password,status) VALUES(%s,%s,%s,'Approved')u   âœ… Teacher added successfully!u   âš ï¸ Add teacher error:© r   ÚcursorÚ executeÚcommitÚcloseÚprintÚ	Exception)ÚnameÚemailÚpasswordÚconnr   Úes         ú=c:\Users\Devanshu Uikey\Projects\Attendence system\teacher.pyÚ
+add_teacherr      sl   € ð	.ÜÓˆØ—‘“ˆØ‰ÐeØ˜U 8Ð,ô	.à
+‰
+Œ
+Ø
+‰
+ŒÜ
+Ð/Õ0øÜ
+ò .Ü
+Ð)¨1×-Ñ-ûð.ús   ‚AA Á	A<Á&A7Á7A<c                  ó  — 	 t        «       } | j                  «       }|j                  d«       |j                   «       }| j	                  «        |D ]
+  }t
+        |«       Œ y # t        $ r}t
+        d|«       Y d }~y d }~ww xY w)NzSELECT * FROM teachersu   âš ï¸ View teacher error:) r   r   r    Úfetchallr	   r
+   r
+   )r   r   ÚrowsÚrr   s        r   Ú
+view_teachersr      sk   € ð/ÜÓˆØ—‘“ˆØ‰Ð/Ô0Ø‰Ó ˆØ
+‰
+ŒØÒˆA”u˜Q•xÑøÜ
+ò /Ü
+Ð*¨A×.Ñ.ûð/ús   ‚AA  Á 	A?Á)A:Á:A?c                 óü   — 	 t        «       }|j                  «       }|j                  d|| f«       |j                   «        |j	                  «        t
+        d«       y # t        $ r}t
+        d|«       Y d }~y d }~ww xY w)Nz'UPDATE teachers SET name=%s WHERE id=%su   âœ… Teacher updated!u   âš ï¸ Update error:r   )Úidr   r   r   r   s        r   Úupdate_teacherr      sf   € ð)ÜÓˆØ—‘“ˆØ‰Ð@À$ÀrÀÔKØ
+‰
+Œ
+Ø
+‰
+ŒÜ
+Ð$Õ%øÜ
+ò )Ü
+Ð$ a×(Ñ(ûð)ús   ‚AA Á	A;Á%A6Á6A;c                 óú   — 	 t        «       }|j                  «       }|j                  d| f«       |j                   «        |j	                  «        t
+        d«       y # t        $ r}t
+        d|«       Y d }~y d }~ww xY w)Nz DELETE FROM teachers WHERE id=%su   âœ… Teacher deleted!u   âš ï¸ Delete error:r   )r   r   r   r   s       r   Údelete_teacherr   %   sd   € ð)ÜÓˆØ—‘“ˆØ‰Ð9¸2¸%Ô@Ø
+‰
+Œ
+Ø
+‰
+ŒÜ
+Ð$Õ%øÜ
+ò )Ü
+Ð$ a×(Ñ(ûð)ús   ‚AA Á	A:Á$A5Á5A:Nc                 óT  — 	 t        d«       t        d«       t        d«       t        d«       t        d«       t        d«      }|d k(  r
+t        «        nU|dk(  r#t        d	«      }t        d
+«      }t         ||«       n-|d
+k(  rt        d«      }t	        |«       n|d
+k(  ry t        d«       Œ¨)Nz
+--- Teacher Menu ---z1. View Teachersz2. Update Teacherz3. Delete Teacherz 4. ExitzChoice: Ú1Ú2z
+Enter ID: z
+New Name: Ú3zEnter ID to delete: Ú4u   âŒ Invalid Choice)r
+   Úinputr   r   r   )Ú
+teacher_idÚchoiceÚtidr   s       r   Úteacher_menur&   0   s   € Ø
+Ü
+Ð&Ô'Ü
+Ð Ô!Ü
+Ð!Ô"Ü
+Ð!Ô"Ü
+ˆiÔÜzÓ"ˆà
+3Š;œ
+Ø
+SŠ[Ü˜Ó%ˆCÜ˜Ó&ˆDÜ˜3˜tÕ$Ø
+SŠ[ÜÐ.Ó/ˆCÜ˜3ÕØ
+SŠ[ØÜÐ(Ô)ð% 
+ó    )N) Ú
+db_connectr   r   r   r   r   r&   © r'   r   ú<module>r*      s!   ðÝ %ò
+.ò	/ò	)ò	)ô*r'   

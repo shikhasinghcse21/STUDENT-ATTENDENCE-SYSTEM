@@ -1,0 +1,48 @@
+<!doctype html>
+<html><head>
+  <meta charset="utf-8"><title>Create Session</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head><body>
+  <div class="container">
+    <h2>Create Attendance Session</h2>
+    <form method="POST" onsubmit="return getLocationBeforeSubmit()">
+      <label>Subject:</label>
+      <select name="subject_id" required>
+        {% for s in subjects %}
+          <option value="{{ s.id }}">{{ s.name }}</option>
+        {% endfor %}
+      </select>
+
+      <label>Duration (minutes):</label>
+      <input type="number" name="duration" value="10" min="1">
+
+      <label>Radius (meters):</label>
+      <input type="number" name="radius" value="20" min="5">
+
+      <label>Note (optional):</label>
+      <input type="text" name="note">
+
+      <input type="hidden" name="latitude" id="latitude">
+      <input type="hidden" name="longitude" id="longitude">
+
+      <button type="submit">Generate Link</button>
+    </form>
+  </div>
+
+<script>
+function getLocationBeforeSubmit(){
+  if (!navigator.geolocation){
+    alert("Geolocation not supported");
+    return false;
+  }
+  navigator.geolocation.getCurrentPosition(function(pos){
+    document.getElementById('latitude').value = pos.coords.latitude;
+    document.getElementById('longitude').value = pos.coords.longitude;
+    document.forms[0].submit();
+  }, function(err){
+    alert("Allow location to create session");
+  }, {enableHighAccuracy:true});
+  return false;
+}
+</script>
+</body></html>

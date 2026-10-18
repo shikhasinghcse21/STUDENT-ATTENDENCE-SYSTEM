@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Subject</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+    <h2>Add New Subject</h2>
+
+    <form method="POST">
+        <label>Subject Name:</label>
+        <input type="text" name="name" required>
+
+        <label>Branch:</label>
+        <select name="branch" required>
+            <option value="">Select Branch</option>
+            <option value="CSE">CSE</option>
+            <option value="IT">IT</option>
+            <option value="ECE">ECE</option>
+            <option value="EC">EC</option>
+            <option value="MECH">Mechanical</option>
+            <option value="CIVIL">Civil</option>
+            <option value="PRINTING">Printing</option>
+        </select>
+
+        <label>Assign Teacher:</label>
+        <select name="teacher_id" required>
+            <option value="">Select Teacher</option>
+            {% for t in teachers %}
+                <option value="{{ t.id }}">{{ t.name }} (ID: {{ t.id }})</option>
+            {% endfor %}
+        </select>
+
+        <button type="submit">Add Subject</button>
+    </form>
+
+    <a class="btn" href="{{ url_for('admin_dashboard') }}">← Back to Admin Dashboard</a>
+</div>
+</body>
+</html>

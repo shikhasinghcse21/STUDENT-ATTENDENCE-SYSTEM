@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Teacher Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Teacher Dashboard</h2>
+        <p>Welcome, {{ teacher_name }} (ID: {{ teacher_id }})</p>
+
+        <div class="menu">
+            <!-- Create session button -->
+            <a class="btn" href="{{ url_for('create_session') }}"> Create Session</a>
+
+            <!-- View subjects assigned to this teacher -->
+            <a class="btn" href="{{ url_for('view_subjects_teacher', teacher_id=teacher_id) }}">📚 My Subjects</a>
+
+            <!-- View all sessions created by this teacher -->
+            <h3>Your Sessions</h3>
+            {% if sessions %}
+                <table style="width:100%; border-collapse: collapse;">
+                    <thead>
+                        <tr>
+                            <th style="border:1px solid #ddd; padding:8px;">ID</th>
+                            <th style="border:1px solid #ddd; padding:8px;">Subject</th>
+                            <th style="border:1px solid #ddd; padding:8px;">Created At</th>
+                            <th style="border:1px solid #ddd; padding:8px;">Expires At</th>
+                            <th style="border:1px solid #ddd; padding:8px;">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for s in sessions %}
+                        <tr>
+                            <td style="border:1px solid #ddd; padding:8px;">{{ s.id }}</td>
+                            <td style="border:1px solid #ddd; padding:8px;">{{ subj_map.get(s.subject_id, 'Unknown') }}</td>
+                            <td style="border:1px solid #ddd; padding:8px;">{{ s.created_at }}</td>
+                            <td style="border:1px solid #ddd; padding:8px;">{{ s.expires_at }}</td>
+                            <td style="border:1px solid #ddd; padding:8px;">
+                                <a href="{{ url_for('teacher_view_session', session_id=s.id) }}">View</a>
+                                <!-- share link -->
+                                {% if s.token %}
+                                    | <a href="{{ url_for('session_link', token=s.token, _external=True) }}" target="_blank">Share Link</a>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p>No sessions yet. Create one using the button above.</p>
+            {% endif %}
+
+            <a class="btn" href="{{ url_for('logout') }}">Logout</a>
+        </div>
+    </div>
+</body>
+</html>

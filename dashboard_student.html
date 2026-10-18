@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/student_dashboard.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h2>Student Dashboard</h2>
+    <p>Welcome, <strong>{{ student_name or student_roll }}</strong></p>
+
+        <div style="text-align:center; margin:16px 0;">
+                <a class="btn" href="{{ url_for('view_subjects_student') }}">Subject</a>
+                <a class="btn" href="{{ url_for('student_dashboard') }}">View Attendance</a> 
+ 
+         <a class="btn" href="{{ url_for('logout') }}" style="background:#d9534f; margin-left:10px;">Logout</a>
+    </div>
+
+    <h3 style="text-align:center; margin-top:20px;">Your Attendance Record</h3>
+
+    {% if attendance %}
+    <table class="att-table" style="margin-top:12px;">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Subject</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for a in attendance %}
+                <tr>
+                    <td>{{ a.date }}</td>
+                    <td>{{ a.subject }}</td>
+                    <td class="{% if a.status == 'Present' %}present{% else %}absent{% endif %}">
+                        {{ a.status }}
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p class="no-attendance">No attendance records found.</p>
+    {% endif %}
+
+</div>
+
+</body>
+</html>

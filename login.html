@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Login - Attendance System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Login</h2>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              <div class="flash {{ category }}">{{ message }}</div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+
+        <form method="POST" action="{{ url_for('login') }}">
+            <label for="role">Role:</label>
+            <select id="role" name="role" required>
+                <option value="teacher">Teacher</option>
+                <option value="student" selected>Student</option>
+                <option value="admin">Admin</option>
+            </select>
+
+            <label for="email_or_id">ID / Roll No / Email / Admin:</label>
+            <input id="email_or_id" type="text" name="email_or_id" required autocomplete="username">
+
+            <label for="password">Password:</label>
+            <input id="password" type="password" name="password" required autocomplete="current-password">
+
+            <button type="submit">Login</button>
+        </form>
+
+        <p class="muted">Don't have an account? <a href="{{ url_for('signup') }}">Sign Up</a></p>
+    </div>
+</body>
+</html>

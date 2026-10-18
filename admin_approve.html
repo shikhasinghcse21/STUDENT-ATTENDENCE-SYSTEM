@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Approve Teachers</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h2>Approve / Reject Teachers</h2>
+
+    <p><a href="{{ url_for('admin_dashboard') }}" class="btn">Back to Dashboard</a></p>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="flash {{ category }}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    {% if pending and pending|length > 0 %}
+      <table style="width:100%; border-collapse:collapse; margin-top:15px;">
+        <thead>
+          <tr style="background:#f0f0f0;">
+            <th style="padding:8px; text-align:left; border:1px solid #ddd;">ID</th>
+            <th style="padding:8px; text-align:left; border:1px solid #ddd;">Name</th>
+            <th style="padding:8px; text-align:left; border:1px solid #ddd;">Email</th>
+            <th style="padding:8px; text-align:left; border:1px solid #ddd;">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for t in pending %}
+          <tr>
+            <td style="padding:8px; border:1px solid #ddd;">{{ t.id }}</td>
+            <td style="padding:8px; border:1px solid #ddd;">{{ t.name }}</td>
+            <td style="padding:8px; border:1px solid #ddd;">{{ t.email }}</td>
+            <td style="padding:8px; border:1px solid #ddd;">
+              <form style="display:inline-block; margin-right:6px;" method="post" action="{{ url_for('admin_approve', teacher_id=t.id) }}">
+                <input type="hidden" name="action" value="approve">
+                <button type="submit" class="btn">Approve</button>
+              </form>
+
+              <form style="display:inline-block;" method="post" action="{{ url_for('admin_approve', teacher_id=t.id) }}">
+                <input type="hidden" name="action" value="reject">
+                <button type="submit" class="btn danger">Reject</button>
+              </form>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p>No pending teachers at the moment.</p>
+    {% endif %}
+  </div>
+</body>
+</html>

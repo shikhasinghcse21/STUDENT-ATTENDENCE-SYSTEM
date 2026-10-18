@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>{{ subject.name if subject else 'Subject' }} — Attendance</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/student_subject_attendance.css') }}">
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+</head>
+<body>
+    <div class="container">
+        <h2>Attendance — {{ subject.name if subject else 'Subject' }}</h2>
+        <p class="student-info">Student: <strong>{{ student_name }}</strong> | Roll: <strong>{{ student_roll }}</strong></p>
+
+        <div class="top-actions">
+            <a class="btn" href="{{ url_for('view_subjects_student') }}">← Back to Subjects</a>
+            <a class="btn" href="{{ url_for('student_dashboard') }}">Dashboard</a>
+        </div>
+
+        {% if attendance %}
+            <table class="attendance-table">
+                <thead>
+                    <tr>
+                        <th>Date / Time</th>
+                        <th>Status</th>
+                        <th>Source</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for a in attendance %}
+                        <tr>
+                            <td>{{ a.date }}</td>
+                            <td class="status">
+                                {% if a.status|lower == 'present' %}
+                                    <span class="present">Present</span>
+                                {% elif a.status|lower == 'absent' %}
+                                    <span class="absent">Absent</span>
+                                {% else %}
+                                    {{ a.status }}
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if a.get('marked_at') %}
+                                    Location-session
+                                {% else %}
+                                    Regular
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <div class="empty-box">
+                <p>No attendance records for this subject yet.</p>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>

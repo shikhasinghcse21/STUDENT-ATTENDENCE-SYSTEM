@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sign Up - Attendance System</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/signup.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h2>Create Account</h2>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="flash {{ category }}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    <form method="POST" action="{{ url_for('signup') }}">
+      <label for="role">Role:</label>
+      <select id="role" name="role" required onchange="onRoleChange(this.value)">
+        <option value="student" selected>Student</option>
+        <option value="teacher">Teacher</option>
+      </select>
+
+      <label for="name">Full Name</label>
+      <input id="name" type="text" name="name" required autocomplete="name" />
+
+      <!-- Roll no separate -->
+      <label for="roll_no">Roll No (students) / ID (teachers)</label>
+      <input id="roll_no" type="text" name="roll_no" placeholder="e.g. 2021CS101" />
+
+      <label for="email">Email</label>
+      <input id="email" type="email" name="email" required autocomplete="email" />
+
+      <label for="password">Password</label>
+      <input id="password" type="password" name="password" required autocomplete="new-password" />
+
+      <!-- Department = stored in backend as 'extra' (branch) -->
+      <label for="department">Department</label>
+      <select id="department" name="extra" required>
+        <option value="">Select Department</option>
+        <option value="CSE">CSE</option>
+        <option value="Mechanical">Mechanical</option>
+        <option value="Civil">Civil</option>
+        <option value="EC">EC</option>
+        <option value="ECE">ECE</option>
+        <option value="IT">IT</option>
+        <option value="Printing">Printing</option>
+      </select>
+
+      <!-- Year kept separate (not stored yet unless backend updated) -->
+      <label for="year">Year</label>
+      <select id="year" name="year" required>
+        <option value="">Select Year</option>
+        <option value="1st">1st Year</option>
+        <option value="2nd">2nd Year</option>
+        <option value="3rd">3rd Year</option>
+        <option value="4th">4th Year</option>
+      </select>
+
+      <button type="submit">Sign Up</button>
+    </form>
+
+    <p class="muted">Already have an account? <a href="{{ url_for('login') }}">Login</a></p>
+  </div>
+
+  <script>
+    // If teacher selected, roll_no required; for student roll_no optional but recommended.
+    function onRoleChange(role) {
+      const roll = document.getElementById('roll_no');
+      if (role === 'teacher') {
+        roll.required = true;
+        roll.placeholder = "Enter teacher ID";
+      } else {
+        roll.required = false;
+        roll.placeholder = "Optional for student (e.g. 2021CS101)";
+      }
+    }
+    document.addEventListener('DOMContentLoaded', () => onRoleChange(document.getElementById('role').value));
+  </script>
+</body>
+</html>

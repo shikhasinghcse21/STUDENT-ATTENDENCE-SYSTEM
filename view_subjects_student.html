@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Choose Subject — Attendance</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/view_subjects_student.css') }}">
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+</head>
+<body>
+    <div class="container">
+        <h2>Choose Subject</h2>
+        <p class="welcome">Welcome, <strong>{{ student_name }}</strong></p>
+
+        <a class="btn back" href="{{ url_for('student_dashboard') }}">← Back to Dashboard</a>
+
+        {% if subjects %}
+            <div class="subjects-grid">
+                {% for s in subjects %}
+                    <div class="subject-card">
+                        <h3>{{ s.name }}</h3>
+                        <p class="branch">Branch: {{ s.branch if s.branch else '—' }}</p>
+                        <a class="btn view" href="{{ url_for('student_subject_attendance', subject_id=s.id) }}">View Attendance</a>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="no-sub">
+                <p>No subjects found for your branch or attendance records.</p>
+                <p><a class="btn" href="{{ url_for('student_dashboard') }}">Return to dashboard</a></p>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>

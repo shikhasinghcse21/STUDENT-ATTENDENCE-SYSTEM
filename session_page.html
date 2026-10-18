@@ -1,0 +1,49 @@
+<!doctype html>
+<html><head>
+  <meta charset="utf-8"><title>Mark Attendance</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head><body>
+  <div class="container">
+    <h2>Attendance for {{ sess.session_note or 'Session' }}</h2>
+    <p>Subject ID: {{ sess.subject_id }} | Expires at: {{ sess.expires_at }}</p>
+
+    <form id="markForm">
+      <label>Roll No:</label>
+      <input name="roll_no" id="roll_no" required>
+      <input type="hidden" id="latitude" name="latitude">
+      <input type="hidden" id="longitude" name="longitude">
+      <button type="button" onclick="mark()">Mark Attendance</button>
+    </form>
+
+    <div id="result"></div>
+  </div>
+
+<script>
+function mark(){
+  const roll = document.getElementById('roll_no').value.trim();
+  if (!roll){ alert('Enter roll no'); return; }
+  if (!navigator.geolocation){ alert('Enable location'); return; }
+
+  navigator.geolocation.getCurrentPosition(function(pos){
+    const lat = pos.coords.latitude, lon = pos.coords.longitude;
+    const form = new FormData();
+    form.append('roll_no', roll);
+    form.append('latitude', lat);
+    form.append('longitude', lon);
+
+    fetch('{{ url_for("session_mark", token=sess.token) }}', {
+      method: 'POST',
+      body: form
+    }).then(r=>r.json()).then(data=>{
+      document.getElementById('result').innerText = data.msg || JSON.stringify(data);
+      if (data.success) document.getElementById('markForm').reset();
+    }).catch(e=>{
+      document.getElementById('result').innerText = 'Network error';
+    });
+
+  }, function(err){
+    alert('Location permission required');
+  }, {enableHighAccuracy:true});
+}
+</script>
+</body></html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>My Subjects</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Subjects for Teacher ID: {{ teacher_id }}</h2>
+
+        {% if subjects %}
+            <table style="width:100%; border-collapse:collapse;">
+                <thead>
+                    <tr>
+                        <th style="border:1px solid #ddd; padding:8px;">ID</th>
+                        <th style="border:1px solid #ddd; padding:8px;">Name</th>
+                        <th style="border:1px solid #ddd; padding:8px;">Branch</th>
+                        <th style="border:1px solid #ddd; padding:8px;">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for s in subjects %}
+                    <tr>
+                        <td style="border:1px solid #ddd; padding:8px;">{{ s.id if s.id is defined else s[0] }}</td>
+                        <td style="border:1px solid #ddd; padding:8px;">{{ s.name if s.name is defined else s[1] }}</td>
+                        <td style="border:1px solid #ddd; padding:8px;">{{ s.branch if s.branch is defined else (s[2] if s|length>2 else '') }}</td>
+                        <td style="border:1px solid #ddd; padding:8px;">
+                            <!-- View attendance for this subject -->
+                            <a href="{{ url_for('teacher_view_session', session_id=0) }}" style="margin-right:8px;">View Sessions</a>
+                            <!-- You can replace the above link with real route if you have one per-subject -->
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No subjects assigned yet.</p>
+        {% endif %}
+
+        <p style="margin-top:16px;">
+            <a class="btn" href="{{ url_for('teacher_dashboard') }}">← Back to Dashboard</a>
+            <a class="btn" href="{{ url_for('create_session') }}">➕ Create Session</a>
+        </p>
+    </div>
+</body>
+</html>

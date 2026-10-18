@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h2>Admin Dashboard</h2>
+
+    <p class="welcome">Welcome, <strong>Admin</strong></p>
+
+    <div class="menu">
+      <!-- use the correct endpoint name defined in app.py -->
+      <a class="btn" href="{{ url_for('admin_approve_page') }}">Approve / Reject Teachers</a>
+      <a class="btn" href="{{ url_for('add_subject') }}"> Add Subject</a>
+
+      <a class="btn danger" href="{{ url_for('logout') }}">Logout</a>
+    </div>
+
+    <br/>
+
+    {% if pending is defined %}
+      <h3>Pending Teachers: {{ pending|length }}</h3>
+    {% endif %}
+  </div>
+</body>
+</html>

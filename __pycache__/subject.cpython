@@ -1,0 +1,39 @@
+Ë
+    %ŠÞhã  ã                   ó"   — d dl mZ d„ Zd„ Zd„ Zy)é    )Úget_connectionc                 óþ   — 	 t        «       }|j                  «       }|j                  d| ||f«       |j                   «        |j	                  «        t
+        d«       y # t        $ r}t
+        d|«       Y d }~y d }~ww xY w)Nz=INSERT INTO subjects(name,branch,teacher_id) VALUES(%s,%s,%s)u   âœ… Subject added!u   âš ï¸ Add subject error:) r   ÚcursorÚ executeÚcommitÚcloseÚprintÚ	Exception)ÚnameÚbranchÚ
+teacher_idÚconnr   Úes         ú=c:\Users\Devanshu Uikey\Projects\Attendence system\subject.pyÚ
+add_subjectr      sl   € ð.ÜÓˆØ—‘“ˆØ‰ÐVÐX\Ð]cÐdnÐWoÔpØ
+‰
+Œ
+Ø
+‰
+ŒÜ
+Ð"Õ#øÜ
+ò .Ü
+Ð)¨1×-Ñ-ûð.ús   ‚AA Á	A<Á&A7Á7A<c                  ó  — 	 t        «       } | j                  «       }|j                  d«       |j                   «       }| j	                  «        |D ]
+  }t
+        |«       Œ y # t        $ r}t
+        d|«       Y d }~y d }~ww xY w)NzSELECT * FROM subjectsu   âš ï¸ View subject error:) r   r   r   Úfetchallr   r	   r
+   )r   r   ÚrowsÚrr   s        r   Ú
+view_subjectsr      sk   € ð/ÜÓˆØ—‘“ˆØ‰Ð/Ô0Ø‰Ó ˆØ
+‰
+ŒØÒˆA”u˜Q•xÑøÜ
+ò /Ü
+Ð*¨A×.Ñ.ûð/ús   ‚AA  Á 	A?Á)A:Á:A?c                  ó  — 	 t        d«       t        d«       t        d«       t        d«       t        d«      } | dk(  r/t        d «      }t        d«      }t        d	«      }t        |||«       n!| d
+k(  r
+t         «        n| d
+k(  ry t        d«       Œ)
+Nz
+--- Subject Menu ---z1. Add Subjectz2. View Subjectsz 3. ExitzChoice: Ú1zName: zBranch: zTeacher ID: Ú2Ú3u   âŒ Invalid Choice)r	   Úinputr   r   )Úchoicer
+   r   Útids       r   Úsubject_menur      s„   € Ø
+Ü
+Ð&Ô'Ü
+ÐÔÜ
+Ð Ô!Ü
+ˆiÔÜzÓ"ˆØ
+3Š;Üx“ˆDÜ˜Ó$ˆFÜnÓ%ˆCÜ˜˜V CÕ(Ø
+SŠ[œ-/Ø
+SŠ[˜%ÜÐ(Ô)ð 
+ó    N)Ú
+db_connectr   r   r   r   © r   r   ú<module>r"      s   ðÝ %ò	.ò	/ó*r   
